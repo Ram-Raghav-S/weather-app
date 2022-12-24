@@ -1,8 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -12,7 +11,6 @@ body {
 .app {
   background-color: lightblue;
   background-size: cover;
-  -webkit-transition: 0.4s ease-out;
   transition: 0.4s ease-out;
 }
 
@@ -34,21 +32,25 @@ main {
 .search-box .search-bar {
   display: block;
   width: 100%;
+
   padding: 9px;
   outline: none;
+
   border: 1px solid whitesmoke;
   border-top: 0px;
   border-radius: 0 0 12px 12px;
   color: black;
   background-color: rgba(255, 255, 255, 0.5);
+
   font-size: medium;
   margin-top: -25px;
-  -webkit-box-shadow: 0px 2px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 2px rgba(0, 0, 0, 0.2);
-  -webkit-transform: 0.4s ease;
-          transform: 0.4s ease;
-}
+  box-shadow: 0px 2px rgba(0, 0, 0, 0.2);
 
-.search-box .search-bar:focus {
-  background-color: rgba(255, 255, 255, 0.75);
+  transform: 0.4s ease;
+
+
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.75);
+  }
+
 }
