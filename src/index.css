@@ -27,7 +27,7 @@ main {
 
 .search-box {
   width: 100%;
-  margin: 0 0 70px;
+  margin: 0 0 58px;
   padding: 0 40px 0 40px;
 }
 
@@ -51,4 +51,49 @@ main {
 
 .search-box .search-bar:focus {
   background-color: rgba(255, 255, 255, 0.75);
+}
+
+.location-box .location {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  color: black;
+  text-shadow: 1px 1px rgba(50, 50, 70, 0.5);
+  margin: 4px;
+}
+
+.location-box .date {
+  color: black;
+  font-size: 17px;
+  font-style: italic;
+  text-align: center;
+}
+
+.weather-box {
+  text-align: center;
+}
+
+.weather-box .temperature {
+  position: relative;
+  display: inline-block;
+  margin: 30px auto 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 8px 20px;
+  color: white;
+  font-size: 82px;
+  font-weight: 900;
+  letter-spacing: px;
+  text-shadow: 3px 6px rgba(50, 50, 70, 0.03);
+  text-align: center;
+  -webkit-box-shadow: 1px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.weather-box .weather {
+  color: white;
+  font-size: 48px;
+  font-weight: 400;
+  text-shadow: 1px 1px rgba(50, 50, 70, 0.5);
 }
