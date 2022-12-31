@@ -12,33 +12,37 @@ const weatherApi = {
 };
 
 function App() {
-  const [query, setQuery] = useState<string>("");
-  const [weather, setWeather] = useState<any>();
+  const [query, setQuery] = useState<string>('');
+  const [weather, setWeather] = useState<any>(null);
 
-  const search = (event: { key: string }) => {
-    if (event.key === "Enter") {
-      fetch(
-        `${weatherApi.base}weather?q=${query}&units=metric&APPID=${weatherApi.key}`
-      )
-        .then((result) => result.json())
-        .then((result) => {
-          console.log(result);
+  const search = (evt: {key: string}) => {
+    if (evt.key === "Enter") {
+      fetch(`${weatherApi.base}weather?q=${query}&units=metric&APPID=${weatherApi.key}`)
+        .then(res => res.json())
+        .then(result => {
           setWeather(result);
+          console.log(result);
         });
     }
-  };
-
+  }
 
   const titleCase = (sentence: string) => {
     const words = sentence.toLowerCase().split(" ");
-    for(var i = 0; i < sentence.length; i++) {
-      words[i] = sentence[i][0].toUpperCase() + sentence[i].slice(1);
+    for (var i = 0; i < words.length; i++) {
+      if (words[i] === "") continue;
+      words[i] = words[i][0].toUpperCase() + words[i].slice(1);
     }
-    return words.join(" ")
-  }
+    return words.join(" ");
+  };
 
   return (
-    <div className="app">
+    <div
+      className={
+        weather?.main != undefined || weather?.main?.temp < 16
+          ? "app"
+          : "app cold"
+      }
+    >
       <main>
         <div className="search-box">
           <input
@@ -52,7 +56,9 @@ function App() {
         </div>
         <div>
           <div className="location-box">
-            <div className="location">{titleCase(query)}</div>
+            <div className="location">
+              {query === "" ? "Search for a city" : titleCase(query)}
+            </div>
             <div className="date">
               {new Date().toLocaleDateString("en-GB", {
                 weekday: "long",
@@ -64,8 +70,14 @@ function App() {
           </div>
         </div>
         <div className="weather-box">
-          <div className="temperature">{Math.round(weather?.main.temp)}°C</div>
-          <div className="weather">{weather?.weather[0].main}</div>
+          {weather?.main != undefined && (
+            <>
+              <div className="temperature">
+                {Math.round(weather?.main?.temp)}°C
+              </div>
+              <div className="weather">{weather?.weather[0]?.main}</div>
+            </>
+          )}
         </div>
       </main>
     </div>
