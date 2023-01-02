@@ -12,19 +12,20 @@ const weatherApi = {
 };
 
 function App() {
-  const [query, setQuery] = useState<string>('');
+  const [query, setQuery] = useState<string>("");
   const [weather, setWeather] = useState<any>(null);
 
-  const search = (evt: {key: string}) => {
+  const search = (evt: { key: string }) => {
     if (evt.key === "Enter") {
-      fetch(`${weatherApi.base}weather?q=${query}&units=metric&APPID=${weatherApi.key}`)
-        .then(res => res.json())
-        .then(result => {
+      fetch(
+        `${weatherApi.base}weather?q=${query}&units=metric&APPID=${weatherApi.key}`
+      )
+        .then((res) => res.json())
+        .then((result) => {
           setWeather(result);
-          console.log(result);
         });
     }
-  }
+  };
 
   const titleCase = (sentence: string) => {
     const words = sentence.toLowerCase().split(" ");
@@ -38,9 +39,11 @@ function App() {
   return (
     <div
       className={
-        weather?.main != undefined || weather?.main?.temp < 16
+        weather?.main == undefined || weather?.main?.temp < 16
           ? "app"
-          : "app cold"
+          : weather?.main?.temp < 29
+          ? "app warm"
+          : "app hot"
       }
     >
       <main>
@@ -57,7 +60,7 @@ function App() {
         <div>
           <div className="location-box">
             <div className="location">
-              {query === "" ? "Search for a city" : titleCase(query)}
+              {weather?.name == undefined ? "Search for a city" : weather.name}
             </div>
             <div className="date">
               {new Date().toLocaleDateString("en-GB", {
