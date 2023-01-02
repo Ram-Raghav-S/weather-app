@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import { sys } from "typescript";
 import "./App.css";
-import locationSign from "./assets/location-sign.png"
+import locationSign from "./assets/location-sign.png";
 
 // TODO: implement to fix api leak
 const getWeatherApiKey = async () => {
@@ -25,8 +25,26 @@ function App() {
         .then((res) => res.json())
         .then((result) => {
           setWeather(result);
+          console.log(result);
         });
     }
+  };
+
+  const searchUsingUserLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => {
+        console.log(position.coords.latitude, position.coords.longitude);
+        fetch(
+          `${weatherApi.base}weather?lat=${position.coords.latitude}&lon=${position.coords.latitude}&appid=${weatherApi.key}&units=metric`
+        )
+          .then((res) => res.json())
+          .then((result) => {
+            setWeather(result);
+          });
+      },
+      () => null,
+      { enableHighAccuracy: true }
+    );
   };
 
   const titleCase = (sentence: string) => {
@@ -60,7 +78,11 @@ function App() {
             value={query}
             onKeyDown={search}
           />
-          <img className="location-icon" src={locationSign}/>
+          <img
+            className="location-icon"
+            src={locationSign}
+            onClick={searchUsingUserLocation}
+          />
         </div>
         <div>
           <div className="location-box">
