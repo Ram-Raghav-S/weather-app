@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { sys } from "typescript";
 import "./App.css";
+import locationSign from "./assets/location-sign.png"
 
 // TODO: implement to fix api leak
 const getWeatherApiKey = async () => {
@@ -36,12 +38,14 @@ function App() {
     return words.join(" ");
   };
 
+  //navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => console.log(position))
+
   return (
     <div
       className={
         weather?.main == undefined || weather?.main?.temp < 16
           ? "app"
-          : weather?.main?.temp < 29
+          : weather?.main?.temp <= 27
           ? "app warm"
           : "app hot"
       }
@@ -51,11 +55,12 @@ function App() {
           <input
             type="text"
             className="search-bar"
-            placeholder="Search for your location"
+            placeholder="Search for a city"
             onChange={(event) => setQuery(event.target.value)}
             value={query}
             onKeyDown={search}
           />
+          <img className="location-icon" src={locationSign}/>
         </div>
         <div>
           <div className="location-box">
