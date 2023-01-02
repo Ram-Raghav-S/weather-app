@@ -15,7 +15,11 @@ body {
 }
 
 .app.warm {
-  background-color: bisque;
+  background-color: rgba(220, 188, 111, 0.608);
+}
+
+.app.hot {
+  background-color: rgba(212, 61, 7, 0.608);
 }
 
 main {
