@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import privateData from "./private.json"
 import locationSign from "./assets/location-sign.png";
 import SearchBox from "./components/SearchBox";
 import SearchDetails from "./components/SearchDetails";
@@ -11,7 +12,7 @@ const getWeatherApiKey = async () => {
 };
 
 const weatherApi = {
-  key: "839fe94c6921794a7c2aa11baaf2fb58", // TODO: fix key leak
+  key: privateData.openWeatherApi.key, // TODO: fix key leak
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
