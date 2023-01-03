@@ -35,7 +35,7 @@ function App() {
       (position: GeolocationPosition) => {
         console.log(position.coords.latitude, position.coords.longitude);
         fetch(
-          `${weatherApi.base}weather?lat=${position.coords.latitude}&lon=${position.coords.latitude}&appid=${weatherApi.key}&units=metric`
+          `${weatherApi.base}weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${weatherApi.key}&units=metric`
         )
           .then((res) => res.json())
           .then((result) => {
@@ -56,7 +56,6 @@ function App() {
     return words.join(" ");
   };
 
-  //navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => console.log(position))
 
   return (
     <div
