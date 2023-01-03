@@ -86,7 +86,7 @@ function App() {
         <div>
           <div className="location-box">
             <div className="location">
-              {weather?.name == undefined ? "Search for a city" : weather.name}
+              {weather?.name == undefined ? "Search for a city" : `${weather.name}, ${weather.sys.country}`}
             </div>
             <div className="date">
               {new Date().toLocaleDateString("en-GB", {
