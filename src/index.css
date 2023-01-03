@@ -52,7 +52,7 @@ main {
 }
 
 .location-icon-container .location-icon {
-  margin-top: 3px;
+  margin-top: 5px;
   height: 29px;
   width: 22px;
 }
@@ -65,8 +65,10 @@ main {
   left: -23px;
   height: 100;
   visibility: hidden;
-  -webkit-transition: 0.1s ease-in;
-  transition: 0.1s ease-in;
+  -webkit-transition-timing-function: cubic-bezier();
+          transition-timing-function: cubic-bezier();
+  -webkit-transition: visibility 0.5s, height 0.5s, width 0.5s;
+  transition: visibility 0.5s, height 0.5s, width 0.5s;
   padding: 3px;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.586);
@@ -75,6 +77,11 @@ main {
 
 .location-icon-container:hover .location-icon-tooltip {
   visibility: visible;
+}
+
+.location-icon-container:hover .location-icon {
+  height: 30px;
+  width: 23px;
 }
 
 .search-box .search-bar {
