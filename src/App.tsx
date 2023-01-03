@@ -3,6 +3,7 @@ import "./App.css";
 import locationSign from "./assets/location-sign.png";
 import SearchBox from "./components/SearchBox";
 import SearchDetails from "./components/SearchDetails";
+import WeatherInfo from "./components/WeatherInfo";
 
 // TODO: implement to fix api leak
 const getWeatherApiKey = async () => {
@@ -38,17 +39,8 @@ function App() {
     >
       <main>
         <SearchBox setWeather={setWeather} />
-        <SearchDetails weather={weather}/>
-        <div className="weather-box">
-          {weather?.main != undefined && (
-            <>
-              <div className="temperature">
-                {Math.round(weather?.main?.temp)}°C
-              </div>
-              <div className="weather">{weather?.weather[0]?.main}</div>
-            </>
-          )}
-        </div>
+        <SearchDetails weather={weather} />
+        <WeatherInfo weather={weather} />
       </main>
     </div>
   );
