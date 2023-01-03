@@ -1,7 +1,7 @@
-import React, { MouseEventHandler, useState } from "react";
-import { sys } from "typescript";
+import React, { useState } from "react";
 import "./App.css";
 import locationSign from "./assets/location-sign.png";
+import SearchBox from "./components/SearchBox";
 
 // TODO: implement to fix api leak
 const getWeatherApiKey = async () => {
@@ -14,38 +14,7 @@ const weatherApi = {
 };
 
 function App() {
-  const [query, setQuery] = useState<string>("");
   const [weather, setWeather] = useState<any>(null);
-
-  const search = (evt: { key: string }) => {
-    if (evt.key === "Enter") {
-      fetch(
-        `${weatherApi.base}weather?q=${query}&units=metric&APPID=${weatherApi.key}`
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          setWeather(result);
-          console.log(result);
-        });
-    }
-  };
-
-  const searchUsingUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(
-      (position: GeolocationPosition) => {
-        console.log(position.coords.latitude, position.coords.longitude);
-        fetch(
-          `${weatherApi.base}weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${weatherApi.key}&units=metric`
-        )
-          .then((res) => res.json())
-          .then((result) => {
-            setWeather(result);
-          });
-      },
-      () => null,
-      { enableHighAccuracy: true }
-    );
-  };
 
   const titleCase = (sentence: string) => {
     const words = sentence.toLowerCase().split(" ");
@@ -67,24 +36,7 @@ function App() {
       }
     >
       <main>
-        <div className="search-box">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search for a city"
-            onChange={(event) => setQuery(event.target.value)}
-            value={query}
-            onKeyDown={search}
-          />
-          <div className="location-icon-container">
-            <img
-              className="location-icon"
-              src={locationSign}
-              onClick={searchUsingUserLocation}
-            />
-            <div className="location-icon-tooltip">Use current location</div>
-          </div>
-        </div>
+        <SearchBox setWeather={setWeather} />
         <div>
           <div className="location-box">
             <div className="location">
