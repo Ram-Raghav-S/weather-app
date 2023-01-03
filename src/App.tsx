@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import locationSign from "./assets/location-sign.png";
 import SearchBox from "./components/SearchBox";
+import SearchDetails from "./components/SearchDetails";
 
 // TODO: implement to fix api leak
 const getWeatherApiKey = async () => {
@@ -37,23 +38,7 @@ function App() {
     >
       <main>
         <SearchBox setWeather={setWeather} />
-        <div>
-          <div className="location-box">
-            <div className="location">
-              {weather?.name == undefined
-                ? "Search for a city"
-                : `${weather.name}, ${weather.sys.country}`}
-            </div>
-            <div className="date">
-              {new Date().toLocaleDateString("en-GB", {
-                weekday: "long",
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
-            </div>
-          </div>
-        </div>
+        <SearchDetails weather={weather}/>
         <div className="weather-box">
           {weather?.main != undefined && (
             <>
