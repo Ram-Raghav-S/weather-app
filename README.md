@@ -12,4 +12,4 @@ A repsonsive app that displays the current weather information of a location and
 
 ## Details
 
-This project using the [OpenWeatherMap api](https://openweathermap.org/api) for accessing weather information.
+This project uses the [OpenWeatherMap api](https://openweathermap.org/api) for accessing weather information.
