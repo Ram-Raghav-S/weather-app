@@ -56,7 +56,6 @@ function App() {
     return words.join(" ");
   };
 
-
   return (
     <div
       className={
@@ -77,16 +76,21 @@ function App() {
             value={query}
             onKeyDown={search}
           />
-          <img
-            className="location-icon"
-            src={locationSign}
-            onClick={searchUsingUserLocation}
-          />
+          <div className="location-icon-container">
+            <img
+              className="location-icon"
+              src={locationSign}
+              onClick={searchUsingUserLocation}
+            />
+            <div className="location-icon-tooltip">Use current location</div>
+          </div>
         </div>
         <div>
           <div className="location-box">
             <div className="location">
-              {weather?.name == undefined ? "Search for a city" : `${weather.name}, ${weather.sys.country}`}
+              {weather?.name == undefined
+                ? "Search for a city"
+                : `${weather.name}, ${weather.sys.country}`}
             </div>
             <div className="date">
               {new Date().toLocaleDateString("en-GB", {

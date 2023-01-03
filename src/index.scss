@@ -31,17 +31,44 @@ main {
   width: 100%;
   margin: 0 0 58px;
   padding: 0 40px 0 40px;
-  display: flex;  
+  display: flex;
   height: 16px;
   align-items: center;
   justify-content: space-between;
-  height: max-content;
+  height: 36px;
   margin-top: -25px;
 }
 
-.search-box .location-icon {
-  height: 29px;
-  width: 22px;
+.location-icon-container {
+  position: relative;
+
+  .location-icon {
+    margin-top: 3px;
+    height: 29px;
+    width: 22px;
+  }
+
+  .location-icon-tooltip {
+    text-align: center;
+    width: 70px;
+    position: absolute;
+    top: 100%;
+    left: -23px;
+
+    height: 100;
+    visibility: hidden;
+    transition: 0.1s ease-in;
+
+    padding: 3px;
+    border-radius: 5px;
+
+    background-color: rgba(255, 255, 255, 0.586);
+    font-size: 12px;
+  }
+}
+
+.location-icon-container:hover .location-icon-tooltip {
+  visibility: visible;
 }
 
 .search-box .search-bar {
@@ -112,8 +139,4 @@ main {
     font-weight: 400;
     text-shadow: 1px 1px rgba(50, 50, 70, 0.5);
   }
-
 }
-
-
-
