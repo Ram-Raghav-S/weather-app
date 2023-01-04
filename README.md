@@ -1,6 +1,6 @@
 # Weather App
 
-A repsonsive app that displays the current weather information of a location and displays it in presentable and concise manner.
+A repsonsive app that allows searching for the current weather information of a location and displays it in presentable and concise manner.
 
 ## Features
 
