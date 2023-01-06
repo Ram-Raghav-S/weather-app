@@ -12,4 +12,4 @@ A repsonsive app that allows searching for the current weather information of a 
 
 ## Details
 
-This project uses the [OpenWeatherMap api](https://openweathermap.org/api) for accessing weather information.
+This project uses the [OpenWeatherMap API](https://openweathermap.org/api) for accessing weather information.
